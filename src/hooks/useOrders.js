@@ -1,47 +1,32 @@
-import { useState, useCallback } from 'react'
-
-// Generate a short order code like "FB-A3X7"
-function generateOrderCode() {
-  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
-  let code = ''
-  for (let i = 0; i < 4; i++) {
-    code += chars[Math.floor(Math.random() * chars.length)]
-  }
-  return `FB-${code}`
-}
+import { useState, useEffect, useCallback } from 'react'
 
 export function useOrders() {
-  const [orders, setOrders] = useState(() => {
-    try {
-      const stored = localStorage.getItem('fuelbar-orders')
-      return stored ? JSON.parse(stored) : []
-    } catch {
-      return []
-    }
-  })
+  const [orders, setOrders] = useState([])
+  const [loading, setLoading] = useState(true)
 
-  const saveOrders = useCallback((newOrders) => {
-    setOrders(newOrders)
-    localStorage.setItem('fuelbar-orders', JSON.stringify(newOrders))
+  useEffect(() => {
+    fetch('/api/orders')
+      .then((res) => res.json())
+      .then((data) => setOrders(data))
+      .catch((err) => console.error('Failed to fetch orders:', err))
+      .finally(() => setLoading(false))
   }, [])
 
-  const addOrder = useCallback((order) => {
-    const newOrder = {
-      ...order,
-      id: generateOrderCode(),
-      timestamp: new Date().toISOString(),
-    }
-    const updated = [...orders, newOrder]
-    saveOrders(updated)
-    // Also log to console for easy export
-    console.log('New order submitted:', newOrder)
-    console.log('All orders:', updated)
+  const addOrder = useCallback(async (order) => {
+    const res = await fetch('/api/orders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(order),
+    })
+    const newOrder = await res.json()
+    setOrders((prev) => [...prev, newOrder])
     return newOrder
-  }, [orders, saveOrders])
+  }, [])
 
-  const clearOrders = useCallback(() => {
-    saveOrders([])
-  }, [saveOrders])
+  const clearOrders = useCallback(async () => {
+    await fetch('/api/orders', { method: 'DELETE' })
+    setOrders([])
+  }, [])
 
-  return { orders, addOrder, clearOrders }
+  return { orders, addOrder, clearOrders, loading }
 }

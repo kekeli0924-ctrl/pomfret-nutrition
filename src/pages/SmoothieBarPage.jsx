@@ -94,9 +94,9 @@ export default function SmoothieBarPage({ orders, addOrder, gameDay }) {
     }
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!validate()) return
-    const order = addOrder({
+    const order = await addOrder({
       smoothie,
       snack,
       studentInfo,
