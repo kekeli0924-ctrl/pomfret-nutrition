@@ -1,0 +1,133 @@
+@import "tailwindcss";
+@import "@fontsource/poppins/400.css";
+@import "@fontsource/poppins/500.css";
+@import "@fontsource/poppins/600.css";
+@import "@fontsource/poppins/700.css";
+@import "@fontsource/poppins/800.css";
+@import "@fontsource/poppins/900.css";
+
+@theme {
+  /* ── Pomfret Crimson (primary accent) ──────── */
+  --color-crimson-50: #FBF1F2;
+  --color-crimson-100: #F5DDE0;
+  --color-crimson-200: #E8B5BC;
+  --color-crimson-300: #D4808E;
+  --color-crimson-400: #C4384E;
+  --color-crimson-500: #9B2335;
+  --color-crimson-600: #7E1D2B;
+  --color-crimson-700: #631622;
+
+  /* ── Pomfret Navy / Dark scale ─────────────── */
+  --color-dark-900: #0E2034;
+  --color-dark-800: #192D44;
+  --color-dark-700: #2D4460;
+  --color-dark-600: #4A5F76;
+  --color-dark-500: #6B7E8E;
+  --color-dark-400: #8B959D;
+  --color-dark-300: #B3BAC0;
+  --color-dark-200: #D4D8DC;
+  --color-dark-100: #EAEDF0;
+  --color-dark-50: #F4F6F7;
+
+  /* ── Nutrition indicator greens (functional) ── */
+  --color-green-50: #F0FDF4;
+  --color-green-100: #DCFCE7;
+  --color-green-200: #BBF7D0;
+  --color-green-400: #4ADE80;
+  --color-green-500: #22C55E;
+  --color-green-600: #16A34A;
+  --color-green-700: #15803D;
+
+  /* ── Semantic ───────────────────────────────── */
+  --color-yellow-50: #FEFCE8;
+  --color-yellow-400: #FACC15;
+  --color-yellow-500: #EAB308;
+  --color-yellow-700: #A16207;
+  --color-red-50: #FEF2F2;
+  --color-red-200: #FECACA;
+  --color-red-500: #EF4444;
+  --color-red-600: #DC2626;
+  --color-red-700: #B91C1C;
+
+  /* ── Blues (for calendar/activities) ──────────── */
+  --color-blue-50: #EFF6FF;
+  --color-blue-500: #3B82F6;
+  --color-blue-600: #2563EB;
+
+  /* ── Orange kept for legacy compatibility ────── */
+  --color-orange-50: #FFF7ED;
+  --color-orange-100: #FFEDD5;
+  --color-orange-200: #FED7AA;
+  --color-orange-400: #FB923C;
+  --color-orange-500: #F97316;
+  --color-orange-600: #EA580C;
+  --color-orange-700: #C2410C;
+
+  /* ── Typography ─────────────────────────────── */
+  --font-sans: "Poppins", system-ui, -apple-system, sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #F4F6F7;
+  color: #0E2034;
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+input, select, textarea {
+  color-scheme: light;
+}
+
+/* Smooth transitions for interactive elements */
+.btn-bounce:active {
+  transform: scale(0.96);
+}
+
+/* Glass filling animation */
+@keyframes fillUp {
+  from { height: 0%; }
+  to { height: var(--fill-height); }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bounceIn {
+  0% { opacity: 0; transform: scale(0.3); }
+  50% { transform: scale(1.05); }
+  70% { transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #B3BAC0; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #8B959D; }

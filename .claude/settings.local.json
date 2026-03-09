@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create vite@latest . -- --template react)",
+      "Bash(npm install react-router-dom)",
+      "mcp__Claude_Preview__preview_start",
+      "WebFetch(domain:www.pomfret.org)",
+      "WebFetch(domain:builtwith.com)",
+      "WebFetch(domain:www.ilovewp.com)",
+      "WebFetch(domain:48804.digitalsports.com)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:www.niche.com)",
+      "WebFetch(domain:www.boardingschoolreview.com)",
+      "WebFetch(domain:www.eliteprospects.com)",
+      "WebFetch(domain:www.shop.pomfretschool.org)",
+      "Bash(npm install @fontsource/poppins)"
+    ]
+  }
+}
