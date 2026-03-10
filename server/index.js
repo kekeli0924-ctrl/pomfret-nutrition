@@ -1,4 +1,6 @@
 import express from 'express'
+import compression from 'compression'
+import helmet from 'helmet'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import ordersRouter from './routes/orders.js'
@@ -8,6 +10,12 @@ import menuRouter from './routes/menu.js'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const app = express()
 const PORT = process.env.API_PORT || 3001
+
+// Gzip/Brotli compression
+app.use(compression())
+
+// Security headers
+app.use(helmet())
 
 app.use(express.json())
 

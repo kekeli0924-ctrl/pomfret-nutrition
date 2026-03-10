@@ -3,7 +3,11 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const dbPath = path.join(__dirname, '..', 'nutrition.db')
+
+// In production on Render, use persistent disk; locally, use project root
+const dbPath = process.env.NODE_ENV === 'production' && process.env.RENDER
+  ? '/opt/render/project/src/data/nutrition.db'
+  : path.join(__dirname, '..', 'nutrition.db')
 
 const db = new Database(dbPath)
 
