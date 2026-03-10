@@ -12,15 +12,14 @@ export default function Layout() {
       </main>
 
       {/* Site-wide footer */}
-      <footer className="bg-dark-900 text-dark-400">
+      <footer className="bg-dark-800 text-dark-400">
         <div className="max-w-6xl mx-auto px-6 py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             {/* Brand */}
             <div className="md:col-span-1">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-2xl">🥗</span>
-                <span className="text-xl font-black text-white tracking-tight">
-                  Pomfret <span className="text-crimson-400">Nutrition</span>
+              <div className="mb-3">
+                <span className="text-lg font-black tracking-widest uppercase font-heading" style={{ color: '#F5F0EB' }}>
+                  Pomfret <span className="text-crimson-500">Nutrition</span>
                 </span>
               </div>
               <p className="text-sm text-dark-500 leading-relaxed">
@@ -30,15 +29,15 @@ export default function Layout() {
 
             {/* Quick links */}
             <div>
-              <h4 className="text-white font-semibold text-sm mb-3">Quick Links</h4>
+              <h4 className="font-semibold text-sm mb-3" style={{ color: '#F5F0EB' }}>Quick Links</h4>
               <div className="flex flex-col gap-2">
-                {['/', '/about', '/activities', '/smoothie-bar', '/join'].map((path) => (
+                {[['/', 'Home'], ['/about', 'About'], ['/activities', 'Activities'], ['/certafuel', 'CertaFuel'], ['/join', 'Join Us']].map(([path, label]) => (
                   <Link
                     key={path}
                     to={path}
-                    className="text-sm text-dark-500 hover:text-white transition-colors"
+                    className="text-sm text-dark-500 hover:text-dark-300 transition-colors"
                   >
-                    {path === '/' ? 'Home' : path.slice(1).replace('-', ' ').replace(/\b\w/g, (c) => c.toUpperCase())}
+                    {label}
                   </Link>
                 ))}
               </div>
@@ -46,39 +45,39 @@ export default function Layout() {
 
             {/* Programs */}
             <div>
-              <h4 className="text-white font-semibold text-sm mb-3">Programs</h4>
+              <h4 className="font-semibold text-sm mb-3" style={{ color: '#F5F0EB' }}>Programs</h4>
               <div className="flex flex-col gap-2 text-sm text-dark-500">
                 <span>Nutrition Labels</span>
                 <span>Performance Packs</span>
-                <span>Smoothie Bar</span>
+                <span>CertaFuel</span>
                 <span>Cooking Demos</span>
               </div>
             </div>
 
-            {/* Game days */}
+            {/* CertaFuel info */}
             <div>
-              <h4 className="text-white font-semibold text-sm mb-3">Smoothie Bar</h4>
+              <h4 className="font-semibold text-sm mb-3" style={{ color: '#F5F0EB' }}>CertaFuel</h4>
               <div className="text-sm text-dark-500 space-y-2">
-                <p>Game Days: <span className="text-crimson-300 font-semibold">Wed & Fri</span></p>
-                <p>Orders close at <span className="text-crimson-400 font-semibold">10:00 AM</span></p>
+                <p>Game Days: <span className="text-crimson-500 font-semibold">Wed & Fri</span></p>
+                <p>Orders close at <span className="text-crimson-500 font-semibold">10:00 AM</span></p>
                 <Link
-                  to="/smoothie-bar"
-                  className="inline-flex items-center gap-1 text-crimson-400 hover:text-crimson-200 font-semibold transition-colors"
+                  to="/certafuel"
+                  className="inline-flex items-center gap-1 text-crimson-500 hover:text-crimson-400 font-semibold transition-colors"
                 >
-                  Order Now →
+                  Order Now
                 </Link>
               </div>
             </div>
           </div>
 
           {/* Bottom bar */}
-          <div className="border-t border-dark-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="border-t border-dark-700 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-xs text-dark-600">
-              Pomfret Nutrition Club — Fueling Student Athletes
+              Pomfret Nutrition Club
             </p>
             <Link
               to="/admin"
-              className="text-xs text-dark-700 hover:text-dark-400 transition-colors"
+              className="text-xs text-dark-600 hover:text-dark-400 transition-colors"
             >
               Admin Dashboard
             </Link>

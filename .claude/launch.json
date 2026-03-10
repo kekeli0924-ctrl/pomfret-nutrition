@@ -4,7 +4,7 @@
     {
       "name": "dev",
       "runtimeExecutable": "/bin/sh",
-      "runtimeArgs": ["-c", "export PATH=/Users/likerun/.nvm/versions/node/v25.2.1/bin:$PATH && npx concurrently -k \"node server/index.js\" \"npx vite\""],
+      "runtimeArgs": ["-c", "export PATH=/Users/likerun/.nvm/versions/node/v25.2.1/bin:$PATH && npx concurrently -k \"node --env-file=.env server/index.js\" \"npx vite\""],
       "port": 5173
     }
   ]

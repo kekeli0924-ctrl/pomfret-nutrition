@@ -1,4 +1,4 @@
-// All menu data for the smoothie bar & snack preorder system
+// All menu data for CertaFuel — smoothies & pregame snack preorder system
 // Updated based on evidence-based pregame nutrition research
 
 export const BASES = [
@@ -133,21 +133,10 @@ export function generateSmoothieName() {
 export const GRADES = ['9th Grade', '10th Grade', '11th Grade', '12th Grade']
 
 export const TEAMS = [
-  'Varsity Football',
-  'JV Football',
-  'Varsity Soccer',
-  'JV Soccer',
-  'Varsity Basketball',
-  'JV Basketball',
-  'Varsity Baseball',
-  'JV Baseball',
-  'Varsity Softball',
-  'Varsity Volleyball',
-  'Cross Country',
-  'Track & Field',
-  'Swimming',
-  'Tennis',
-  'Wrestling',
+  'Crew',
+  'Golf',
   'Lacrosse',
+  'Tennis',
+  'Track & Field',
   'Other',
 ]

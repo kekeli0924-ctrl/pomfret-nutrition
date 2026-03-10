@@ -21,7 +21,7 @@ export default function StudentInfo({ info, onChange }) {
             value={info.name}
             onChange={update('name')}
             placeholder="First and last name"
-            className="w-full px-4 py-3 rounded-xl border-2 border-dark-200 bg-white focus:border-crimson-500 focus:outline-none transition-colors text-sm"
+            className="w-full px-4 py-3 rounded-md border border-dark-200 bg-white focus:border-crimson-500 focus:outline-none transition-colors text-sm"
           />
         </div>
 
@@ -33,7 +33,7 @@ export default function StudentInfo({ info, onChange }) {
           <select
             value={info.grade}
             onChange={update('grade')}
-            className="w-full px-4 py-3 rounded-xl border-2 border-dark-200 bg-white focus:border-crimson-500 focus:outline-none transition-colors text-sm cursor-pointer"
+            className="w-full px-4 py-3 rounded-md border border-dark-200 bg-white focus:border-crimson-500 focus:outline-none transition-colors text-sm cursor-pointer"
           >
             <option value="">Select your grade</option>
             {GRADES.map((g) => (
@@ -50,7 +50,7 @@ export default function StudentInfo({ info, onChange }) {
           <select
             value={info.team}
             onChange={update('team')}
-            className="w-full px-4 py-3 rounded-xl border-2 border-dark-200 bg-white focus:border-crimson-500 focus:outline-none transition-colors text-sm cursor-pointer"
+            className="w-full px-4 py-3 rounded-md border border-dark-200 bg-white focus:border-crimson-500 focus:outline-none transition-colors text-sm cursor-pointer"
           >
             <option value="">Select your team</option>
             {TEAMS.map((t) => (

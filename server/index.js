@@ -2,6 +2,8 @@ import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import ordersRouter from './routes/orders.js'
+import adminRouter from './routes/admin.js'
+import menuRouter from './routes/menu.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const app = express()
@@ -15,8 +17,14 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(cors.default())
 }
 
-// API routes
+// Admin auth routes (login/logout)
+app.use('/api/admin', adminRouter)
+
+// Order routes (auth applied per-route inside the router)
 app.use('/api/orders', ordersRouter)
+
+// Menu + nutrition routes (public)
+app.use('/api/menu', menuRouter)
 
 // In production, serve the Vite build
 if (process.env.NODE_ENV === 'production') {

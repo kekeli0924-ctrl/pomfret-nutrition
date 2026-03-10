@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import db from '../db.js'
+import { requireAdmin } from './admin.js'
 
 const router = Router()
 
@@ -9,7 +10,7 @@ function generateOrderCode() {
   for (let i = 0; i < 4; i++) {
     code += chars[Math.floor(Math.random() * chars.length)]
   }
-  return `FB-${code}`
+  return `CF-${code}`
 }
 
 function rowToOrder(row) {
@@ -27,13 +28,13 @@ function rowToOrder(row) {
   }
 }
 
-// GET /api/orders
-router.get('/', (req, res) => {
+// GET /api/orders — admin only
+router.get('/', requireAdmin, (req, res) => {
   const rows = db.prepare('SELECT * FROM orders ORDER BY timestamp DESC').all()
   res.json(rows.map(rowToOrder))
 })
 
-// POST /api/orders
+// POST /api/orders — public (students place orders)
 router.post('/', (req, res) => {
   const { smoothie, snack, studentInfo, gameDay } = req.body
 
@@ -74,14 +75,14 @@ router.post('/', (req, res) => {
   })
 })
 
-// DELETE /api/orders
-router.delete('/', (req, res) => {
+// DELETE /api/orders — admin only
+router.delete('/', requireAdmin, (req, res) => {
   const result = db.prepare('DELETE FROM orders').run()
   res.json({ message: 'All orders deleted', count: result.changes })
 })
 
-// DELETE /api/orders/:id
-router.delete('/:id', (req, res) => {
+// DELETE /api/orders/:id — admin only
+router.delete('/:id', requireAdmin, (req, res) => {
   const result = db.prepare('DELETE FROM orders WHERE id = ?').run(req.params.id)
   if (result.changes === 0) {
     return res.status(404).json({ error: 'Order not found' })

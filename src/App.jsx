@@ -3,15 +3,16 @@ import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import ActivitiesPage from './pages/ActivitiesPage'
-import SmoothieBarPage from './pages/SmoothieBarPage'
+import CertaFuelPage from './pages/CertaFuelPage'
 import JoinUsPage from './pages/JoinUsPage'
+import NutritionLabelsPage from './pages/NutritionLabelsPage'
 import AdminPage from './pages/AdminPage'
 import { useOrders } from './hooks/useOrders'
 import { useGameDay } from './hooks/useGameDay'
 import ScrollToTop from './components/ScrollToTop'
 
 export default function App() {
-  const { orders, addOrder, clearOrders } = useOrders()
+  const { orders, addOrder, clearOrders, fetchOrders } = useOrders()
   const gameDay = useGameDay()
 
   return (
@@ -24,15 +25,16 @@ export default function App() {
           <Route path="about" element={<AboutPage />} />
           <Route path="activities" element={<ActivitiesPage />} />
           <Route
-            path="smoothie-bar"
+            path="certafuel"
             element={
-              <SmoothieBarPage
+              <CertaFuelPage
                 orders={orders}
                 addOrder={addOrder}
                 gameDay={gameDay}
               />
             }
           />
+          <Route path="nutrition-labels" element={<NutritionLabelsPage />} />
           <Route path="join" element={<JoinUsPage />} />
         </Route>
 
@@ -43,6 +45,7 @@ export default function App() {
             <AdminPage
               orders={orders}
               clearOrders={clearOrders}
+              fetchOrders={fetchOrders}
               gameDay={gameDay}
             />
           }

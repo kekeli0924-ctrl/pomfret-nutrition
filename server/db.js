@@ -22,4 +22,12 @@ db.exec(`
   )
 `)
 
+db.exec(`
+  CREATE TABLE IF NOT EXISTS nutrition_cache (
+    dish_name   TEXT PRIMARY KEY,
+    data        TEXT NOT NULL,
+    created_at  TEXT NOT NULL
+  )
+`)
+
 export default db

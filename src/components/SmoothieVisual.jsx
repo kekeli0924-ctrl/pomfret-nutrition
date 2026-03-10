@@ -19,8 +19,8 @@ export default function SmoothieVisual({ base, fruits, boosters }) {
 
   // Blend the colors of selected ingredients
   const blendColor = selected.length > 0
-    ? blendColors(selected.map((i) => i?.color || '#E2E8F0'))
-    : '#E2E8F0'
+    ? blendColors(selected.map((i) => i?.color || '#E0E0E0'))
+    : '#E0E0E0'
 
   return (
     <div className="flex flex-col items-center gap-3">
@@ -28,7 +28,7 @@ export default function SmoothieVisual({ base, fruits, boosters }) {
       <div className="relative w-28 h-44 flex flex-col justify-end">
         {/* Glass outline — trapezoid shape */}
         <div
-          className="relative w-full h-full rounded-b-3xl overflow-hidden border-2 border-dark-300 bg-white/50"
+          className="relative w-full h-full rounded-b-2xl overflow-hidden border border-dark-200 bg-white"
           style={{
             clipPath: 'polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%)',
           }}
@@ -41,12 +41,11 @@ export default function SmoothieVisual({ base, fruits, boosters }) {
               background: `linear-gradient(180deg, ${blendColor}CC 0%, ${blendColor} 100%)`,
             }}
           >
-            {/* Bubble effect */}
+            {/* Subtle bubble effect */}
             {fillPercent > 20 && (
               <>
-                <div className="absolute top-2 left-4 w-2 h-2 bg-white/30 rounded-full" style={{ animation: 'pulse 2s infinite' }} />
-                <div className="absolute top-6 right-5 w-1.5 h-1.5 bg-white/20 rounded-full" style={{ animation: 'pulse 3s infinite 0.5s' }} />
-                <div className="absolute top-10 left-6 w-1 h-1 bg-white/25 rounded-full" style={{ animation: 'pulse 2.5s infinite 1s' }} />
+                <div className="absolute top-2 left-4 w-1.5 h-1.5 bg-white/20 rounded-full" style={{ animation: 'pulse 2s infinite' }} />
+                <div className="absolute top-6 right-5 w-1 h-1 bg-white/15 rounded-full" style={{ animation: 'pulse 3s infinite 0.5s' }} />
               </>
             )}
           </div>
@@ -54,17 +53,17 @@ export default function SmoothieVisual({ base, fruits, boosters }) {
           {/* Empty state */}
           {fillPercent === 0 && (
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-dark-300 text-xs font-medium text-center px-2">Add ingredients!</span>
+              <span className="text-dark-400 text-xs font-medium text-center px-2">Add ingredients</span>
             </div>
           )}
         </div>
 
         {/* Straw */}
         {fillPercent > 0 && (
-          <div className="absolute -top-4 right-6 w-1.5 h-20 bg-green-500 rounded-full origin-bottom"
+          <div className="absolute -top-4 right-6 w-1.5 h-20 bg-dark-300 rounded-full origin-bottom"
             style={{ transform: 'rotate(-8deg)', animation: 'fadeIn 0.3s ease-out' }}
           >
-            <div className="absolute -top-1 -left-0.5 w-2.5 h-3 bg-green-500 rounded-full" />
+            <div className="absolute -top-1 -left-0.5 w-2.5 h-3 bg-dark-300 rounded-full" />
           </div>
         )}
       </div>
@@ -85,7 +84,7 @@ export default function SmoothieVisual({ base, fruits, boosters }) {
 
       {/* Fill percentage */}
       {fillPercent > 0 && (
-        <span className="text-xs text-dark-400 font-medium">
+        <span className="text-xs text-dark-500 font-medium">
           {Math.round(fillPercent)}% full
         </span>
       )}
@@ -95,7 +94,7 @@ export default function SmoothieVisual({ base, fruits, boosters }) {
 
 // Simple color blending — averages hex colors
 function blendColors(hexColors) {
-  if (hexColors.length === 0) return '#E2E8F0'
+  if (hexColors.length === 0) return '#E0E0E0'
   let r = 0, g = 0, b = 0
   hexColors.forEach((hex) => {
     const c = hexToRgb(hex)

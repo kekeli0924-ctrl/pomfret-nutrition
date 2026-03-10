@@ -5,31 +5,36 @@
 @import "@fontsource/poppins/700.css";
 @import "@fontsource/poppins/800.css";
 @import "@fontsource/poppins/900.css";
+@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/700.css";
+@import "@fontsource/playfair-display/900.css";
+@import "@fontsource/montserrat/600.css";
+@import "@fontsource/montserrat/800.css";
 
 @theme {
-  /* ── Pomfret Crimson (primary accent) ──────── */
-  --color-crimson-50: #FBF1F2;
-  --color-crimson-100: #F5DDE0;
-  --color-crimson-200: #E8B5BC;
-  --color-crimson-300: #D4808E;
-  --color-crimson-400: #C4384E;
-  --color-crimson-500: #9B2335;
-  --color-crimson-600: #7E1D2B;
-  --color-crimson-700: #631622;
+  /* ── Pomfret Red accent ────────────────────── */
+  --color-crimson-50: #FDE8EC;
+  --color-crimson-100: #F9C5CE;
+  --color-crimson-200: #F09DAD;
+  --color-crimson-300: #E06A80;
+  --color-crimson-400: #D33D55;
+  --color-crimson-500: #C41E3A;
+  --color-crimson-600: #9B1B30;
+  --color-crimson-700: #751523;
 
-  /* ── Pomfret Navy / Dark scale ─────────────── */
-  --color-dark-900: #0E2034;
-  --color-dark-800: #192D44;
-  --color-dark-700: #2D4460;
-  --color-dark-600: #4A5F76;
-  --color-dark-500: #6B7E8E;
-  --color-dark-400: #8B959D;
-  --color-dark-300: #B3BAC0;
-  --color-dark-200: #D4D8DC;
-  --color-dark-100: #EAEDF0;
-  --color-dark-50: #F4F6F7;
+  /* ── Neutral scale ─────────────────────────── */
+  --color-dark-900: #1A1A1A;
+  --color-dark-800: #0D0D0D;
+  --color-dark-700: #333333;
+  --color-dark-600: #555555;
+  --color-dark-500: #8A8A8A;
+  --color-dark-400: #AAAAAA;
+  --color-dark-300: #CCCCCC;
+  --color-dark-200: #E0E0E0;
+  --color-dark-100: #F0F0F0;
+  --color-dark-50: #F5F0EB;
 
-  /* ── Nutrition indicator greens (functional) ── */
+  /* ── Functional greens (nutrition indicators) ── */
   --color-green-50: #F0FDF4;
   --color-green-100: #DCFCE7;
   --color-green-200: #BBF7D0;
@@ -49,12 +54,12 @@
   --color-red-600: #DC2626;
   --color-red-700: #B91C1C;
 
-  /* ── Blues (for calendar/activities) ──────────── */
+  /* ── Blues ──────────────────────────────────── */
   --color-blue-50: #EFF6FF;
   --color-blue-500: #3B82F6;
   --color-blue-600: #2563EB;
 
-  /* ── Orange kept for legacy compatibility ────── */
+  /* ── Orange (legacy) ───────────────────────── */
   --color-orange-50: #FFF7ED;
   --color-orange-100: #FFEDD5;
   --color-orange-200: #FED7AA;
@@ -65,12 +70,14 @@
 
   /* ── Typography ─────────────────────────────── */
   --font-sans: "Poppins", system-ui, -apple-system, sans-serif;
+  --font-heading: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-montserrat: "Montserrat", system-ui, -apple-system, sans-serif;
 }
 
 body {
   margin: 0;
-  background-color: #F4F6F7;
-  color: #0E2034;
+  background-color: #F5F0EB;
+  color: #1A1A1A;
   -webkit-font-smoothing: antialiased;
   font-variant-numeric: tabular-nums;
 }
@@ -79,16 +86,20 @@ body {
   min-height: 100dvh;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
 input, select, textarea {
   color-scheme: light;
 }
 
 /* Smooth transitions for interactive elements */
 .btn-bounce:active {
-  transform: scale(0.96);
+  transform: scale(0.97);
 }
 
-/* Glass filling animation */
+/* Animations */
 @keyframes fillUp {
   from { height: 0%; }
   to { height: var(--fill-height); }
@@ -121,13 +132,8 @@ input, select, textarea {
   50% { opacity: 0.6; }
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar { width: 6px; }
+/* Minimal scrollbar */
+::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #B3BAC0; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #8B959D; }
+::-webkit-scrollbar-thumb { background: #CCCCCC; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #AAAAAA; }
