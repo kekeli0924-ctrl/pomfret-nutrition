@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 
+const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfi4ZBpX8CCXKujvJedAexCAnaVIKv0DSQJ2FD-CUm5jFHy_w/viewform'
+
 const NAV_LINKS = [
   { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
   { to: '/nutrition-labels', label: 'Nutrition Labels' },
   { to: '/activities', label: 'Activities' },
   { to: '/certafuel', label: 'CertaFuel' },
-  { to: '/join', label: 'Join Us' },
+  { to: GOOGLE_FORM_URL, label: 'Join Us', external: true },
 ]
 
 export default function Navbar() {
@@ -49,22 +51,34 @@ export default function Navbar() {
 
           {/* Desktop nav links */}
           <div className="hidden md:flex items-center gap-1">
-            {NAV_LINKS.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                end={link.to === '/'}
-                className={({ isActive }) =>
-                  `px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors duration-200 ${
-                    isActive
-                      ? 'text-crimson-500'
-                      : 'text-dark-500 hover:text-dark-900'
-                  }`
-                }
-              >
-                {link.label}
-              </NavLink>
-            ))}
+            {NAV_LINKS.map((link) =>
+              link.external ? (
+                <a
+                  key={link.to}
+                  href={link.to}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors duration-200 text-dark-500 hover:text-dark-900"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  end={link.to === '/'}
+                  className={({ isActive }) =>
+                    `px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors duration-200 ${
+                      isActive
+                        ? 'text-crimson-500'
+                        : 'text-dark-500 hover:text-dark-900'
+                    }`
+                  }
+                >
+                  {link.label}
+                </NavLink>
+              )
+            )}
           </div>
 
           {/* Desktop CTA */}
@@ -116,22 +130,34 @@ export default function Navbar() {
         }`}
       >
         <div className="flex flex-col p-6 gap-1">
-          {NAV_LINKS.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              end={link.to === '/'}
-              className={({ isActive }) =>
-                `px-4 py-3 text-sm font-semibold uppercase tracking-wider transition-colors duration-200 ${
-                  isActive
-                    ? 'text-crimson-500'
-                    : 'text-dark-500 hover:text-dark-900'
-                }`
-              }
-            >
-              {link.label}
-            </NavLink>
-          ))}
+          {NAV_LINKS.map((link) =>
+            link.external ? (
+              <a
+                key={link.to}
+                href={link.to}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-3 text-sm font-semibold uppercase tracking-wider transition-colors duration-200 text-dark-500 hover:text-dark-900"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                end={link.to === '/'}
+                className={({ isActive }) =>
+                  `px-4 py-3 text-sm font-semibold uppercase tracking-wider transition-colors duration-200 ${
+                    isActive
+                      ? 'text-crimson-500'
+                      : 'text-dark-500 hover:text-dark-900'
+                  }`
+                }
+              >
+                {link.label}
+              </NavLink>
+            )
+          )}
 
           <div className="mt-4 pt-4 border-t border-dark-200">
             <NavLink

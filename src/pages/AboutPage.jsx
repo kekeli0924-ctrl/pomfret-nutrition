@@ -2,12 +2,7 @@ import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
 
 const TEAM_MEMBERS = [
-  { name: 'Alex Rivera', role: 'Club President', bio: 'Varsity soccer captain who started the club after learning how nutrition transformed their game-day performance.' },
-  { name: 'Jordan Lee', role: 'Vice President', bio: 'Manages CertaFuel logistics and makes sure every game day runs smoothly from prep to pickup.' },
-  { name: 'Priya Patel', role: 'Nutrition Lead', bio: 'Designed our color-coded label system and researches evidence-based sports nutrition for the menu.' },
-  { name: 'Marcus Chen', role: 'Social Media Manager', bio: 'Creates content that makes healthy eating look as good as it tastes. Follow us for smoothie drops and tips!' },
-  { name: 'Sofia Martinez', role: 'Events Coordinator', bio: 'Plans our workshops, cooking demos, and guest speaker sessions. Always looking for the next big event idea.' },
-  { name: 'Ethan Brooks', role: 'CertaFuel Manager', bio: 'Runs CertaFuel on game days — from blending smoothies to training new volunteers on the recipes.' },
+  { name: 'Keke Li', role: 'Club President', bio: 'Founded the Pomfret Nutrition Club to make nutrition accessible and performance-driven for every student athlete.' },
 ]
 
 export default function AboutPage() {
@@ -66,7 +61,7 @@ export default function AboutPage() {
                 Core Program
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-dark-900 mt-3 mb-3">
-                Game Day Performance Packs
+                CertaFuel
               </h2>
               <p className="text-dark-500 max-w-xl mx-auto">
                 Curated snack bundles designed to fuel athletes before and after competition.

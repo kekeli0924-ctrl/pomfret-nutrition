@@ -91,12 +91,14 @@ export default function HomePage() {
             >
               Order from CertaFuel
             </Link>
-            <Link
-              to="/join"
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfi4ZBpX8CCXKujvJedAexCAnaVIKv0DSQJ2FD-CUm5jFHy_w/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-bounce inline-flex items-center bg-crimson-500 hover:bg-crimson-600 text-white font-semibold text-base px-7 py-3 rounded-md transition-colors duration-200"
             >
               Join the Club
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -191,12 +193,14 @@ export default function HomePage() {
               — there's a spot for you.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                to="/join"
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfi4ZBpX8CCXKujvJedAexCAnaVIKv0DSQJ2FD-CUm5jFHy_w/viewform"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-bounce inline-flex items-center bg-crimson-500 hover:bg-crimson-600 text-white font-semibold text-base px-7 py-3 rounded-md transition-colors duration-200"
               >
                 Join the Club
-              </Link>
+              </a>
               <Link
                 to="/about"
                 className="btn-bounce inline-flex items-center bg-crimson-500 hover:bg-crimson-600 text-white font-semibold text-base px-7 py-3 rounded-md transition-colors duration-200"

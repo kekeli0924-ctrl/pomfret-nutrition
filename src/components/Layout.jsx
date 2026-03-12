@@ -31,7 +31,7 @@ export default function Layout() {
             <div>
               <h4 className="font-semibold text-sm mb-3" style={{ color: '#F5F0EB' }}>Quick Links</h4>
               <div className="flex flex-col gap-2">
-                {[['/', 'Home'], ['/about', 'About'], ['/activities', 'Activities'], ['/certafuel', 'CertaFuel'], ['/join', 'Join Us']].map(([path, label]) => (
+                {[['/', 'Home'], ['/about', 'About'], ['/activities', 'Activities'], ['/certafuel', 'CertaFuel']].map(([path, label]) => (
                   <Link
                     key={path}
                     to={path}
@@ -40,6 +40,14 @@ export default function Layout() {
                     {label}
                   </Link>
                 ))}
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSfi4ZBpX8CCXKujvJedAexCAnaVIKv0DSQJ2FD-CUm5jFHy_w/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-dark-500 hover:text-dark-300 transition-colors"
+                >
+                  Join Us
+                </a>
               </div>
             </div>
 

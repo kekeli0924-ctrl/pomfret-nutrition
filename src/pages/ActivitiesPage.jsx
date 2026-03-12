@@ -20,12 +20,6 @@ const ACTIVITIES = [
     tag: 'Quarterly',
   },
   {
-    title: 'Nutrition Myth Busters',
-    description:
-      'Interactive sessions where we debunk common nutrition myths — like "carbs are bad" or "you need supplements to be fit."',
-    tag: 'Bi-weekly',
-  },
-  {
     title: 'Athlete Meal Prep Tutorials',
     description:
       'Step-by-step meal prep tutorials designed for student athletes — affordable, easy, and packed with performance fuel.',
@@ -46,7 +40,7 @@ const ACTIVITIES = [
   {
     title: 'Social Media & Outreach',
     description:
-      'Creating content that makes nutrition fun and shareable — recipe posts, myth busts, athlete features, and more.',
+      'Creating content that makes nutrition fun and shareable — recipe posts, athlete features, and more.',
     tag: 'Ongoing',
   },
 ]
@@ -55,7 +49,6 @@ const CALENDAR_EVENTS = [
   { month: 'March', events: [
     { date: '12', day: 'Wed', title: 'CertaFuel — Game Day', type: 'certafuel' },
     { date: '14', day: 'Fri', title: 'CertaFuel — Game Day', type: 'certafuel' },
-    { date: '18', day: 'Tue', title: 'Nutrition Myth Busters: Protein Edition', type: 'workshop' },
     { date: '19', day: 'Wed', title: 'CertaFuel — Game Day', type: 'certafuel' },
     { date: '21', day: 'Fri', title: 'CertaFuel — Game Day', type: 'certafuel' },
     { date: '25', day: 'Tue', title: 'Athlete Meal Prep 101', type: 'workshop' },
@@ -89,7 +82,7 @@ export default function ActivitiesPage() {
             Activities & Events
           </h1>
           <p className="text-lg text-dark-400 max-w-xl mx-auto">
-            From cooking demos to myth-busting sessions — here's everything our club does throughout the year.
+            From cooking demos to guest speakers — here's everything our club does throughout the year.
           </p>
         </div>
       </section>
