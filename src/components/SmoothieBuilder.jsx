@@ -1,9 +1,10 @@
+import { useState } from 'react'
 import { BASES, FRUITS, BOOSTERS } from '../data/menu'
 import SmoothieVisual from './SmoothieVisual'
 
 function NutritionDot({ level }) {
-  const colors = { green: 'bg-green-500', yellow: 'bg-yellow-400' }
-  const labels = { green: 'Great choice', yellow: 'Moderate' }
+  const colors = { pre: 'bg-blue-500', post: 'bg-orange-500', both: 'bg-green-500' }
+  const labels = { pre: 'Pre-workout', post: 'Post-workout', both: 'Pre & Post' }
   return (
     <span
       className={`inline-block w-2 h-2 rounded-full ${colors[level]} shrink-0`}
@@ -12,32 +13,68 @@ function NutritionDot({ level }) {
   )
 }
 
-function IngredientChip({ item, selected, onToggle, type }) {
+function IngredientChip({ item, selected, onToggle, type, expanded, onToggleInfo }) {
   const isSelected = type === 'base'
     ? selected === item.id
     : selected.includes(item.id)
 
   return (
-    <button
-      onClick={() => onToggle(item.id)}
-      className={`btn-bounce flex items-center gap-2 px-4 py-3 rounded-md border transition-colors duration-200 cursor-pointer text-left ${
-        isSelected
-          ? 'border-crimson-500 bg-crimson-50'
-          : 'border-dark-200 bg-white hover:border-dark-300'
-      }`}
-    >
-      <span className="text-lg">{item.emoji}</span>
-      <span className="font-semibold text-sm text-dark-900">{item.name}</span>
-      <NutritionDot level={item.nutrition} />
-      {isSelected && (
-        <span className="ml-auto text-crimson-500 text-sm font-bold">✓</span>
+    <div className="flex flex-col">
+      <div className="flex items-center">
+        <button
+          onClick={() => onToggle(item.id)}
+          className={`btn-bounce flex-1 flex items-center gap-2 px-4 py-3 rounded-md border transition-colors duration-200 cursor-pointer text-left ${
+            expanded ? 'rounded-b-none' : ''
+          } ${
+            isSelected
+              ? 'border-crimson-500 bg-crimson-50'
+              : 'border-dark-200 bg-white hover:border-dark-300'
+          }`}
+        >
+          <span className="text-lg">{item.emoji}</span>
+          <span className="font-semibold text-sm text-dark-900">{item.name}</span>
+          <NutritionDot level={item.nutrition} />
+          {item.allergens && (
+            <span className="text-[9px] font-semibold text-red-500 uppercase tracking-wide">
+              {item.allergens.map(a => a === 'tree-nut' ? 'nut' : a).join(' · ')}
+            </span>
+          )}
+          {isSelected && (
+            <span className="ml-auto text-crimson-500 text-sm font-bold">✓</span>
+          )}
+          {item.info && (
+            <span
+              onClick={(e) => { e.stopPropagation(); onToggleInfo(item.id) }}
+              className={`ml-auto w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center shrink-0 cursor-pointer transition-colors ${
+                expanded
+                  ? 'bg-crimson-500 text-white'
+                  : 'bg-dark-100 text-dark-500 hover:bg-dark-200'
+              } ${isSelected ? 'ml-0' : ''}`}
+            >
+              i
+            </span>
+          )}
+        </button>
+      </div>
+      {expanded && item.info && (
+        <div
+          className={`px-4 py-2.5 text-xs text-dark-600 leading-relaxed border border-t-0 rounded-b-md ${
+            isSelected ? 'border-crimson-500 bg-crimson-50/50' : 'border-dark-200 bg-dark-50'
+          }`}
+          style={{ animation: 'fadeIn 0.2s ease-out' }}
+        >
+          {item.info}
+        </div>
       )}
-    </button>
+    </div>
   )
 }
 
 export default function SmoothieBuilder({ smoothie, onChange }) {
   const { base, fruits, boosters } = smoothie
+  const [expandedInfo, setExpandedInfo] = useState(null)
+
+  const toggleInfo = (id) => setExpandedInfo(expandedInfo === id ? null : id)
 
   const setBase = (id) => onChange({ ...smoothie, base: id })
   const toggleFruit = (id) => {
@@ -81,13 +118,19 @@ export default function SmoothieBuilder({ smoothie, onChange }) {
         )}
       </div>
 
-      <div className="flex items-center gap-4 text-xs text-dark-500 bg-dark-50 rounded-md px-4 py-2.5">
-        <span className="font-semibold text-dark-700">Nutrition Guide:</span>
+      <div className="flex items-center gap-4 text-xs text-dark-500 bg-dark-50 rounded-md px-4 py-2.5 flex-wrap">
+        <span className="font-semibold text-dark-700">Timing Guide:</span>
         <span className="flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-green-500" /> Great choice
+          <span className="w-2 h-2 rounded-full bg-blue-500" /> Pre-workout
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-yellow-400" /> Moderate
+          <span className="w-2 h-2 rounded-full bg-orange-500" /> Post-workout
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-green-500" /> Both
+        </span>
+        <span className="flex items-center gap-1.5 ml-auto">
+          <span className="w-4 h-4 rounded-full bg-dark-100 text-dark-500 text-[10px] font-bold flex items-center justify-center">i</span> Tap for info
         </span>
       </div>
 
@@ -98,7 +141,7 @@ export default function SmoothieBuilder({ smoothie, onChange }) {
         <p className="text-sm text-dark-500 mb-3">Pick one liquid base for your smoothie</p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {BASES.map((item) => (
-            <IngredientChip key={item.id} item={item} selected={base} onToggle={setBase} type="base" />
+            <IngredientChip key={item.id} item={item} selected={base} onToggle={setBase} type="base" expanded={expandedInfo === item.id} onToggleInfo={toggleInfo} />
           ))}
         </div>
       </div>
@@ -110,7 +153,7 @@ export default function SmoothieBuilder({ smoothie, onChange }) {
         <p className="text-sm text-dark-500 mb-3">Select one or more fruits</p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {FRUITS.map((item) => (
-            <IngredientChip key={item.id} item={item} selected={fruits} onToggle={toggleFruit} type="fruit" />
+            <IngredientChip key={item.id} item={item} selected={fruits} onToggle={toggleFruit} type="fruit" expanded={expandedInfo === item.id} onToggleInfo={toggleInfo} />
           ))}
         </div>
       </div>
@@ -120,7 +163,7 @@ export default function SmoothieBuilder({ smoothie, onChange }) {
         <p className="text-sm text-dark-500 mb-3">Optional add-ons for extra nutrition</p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {BOOSTERS.map((item) => (
-            <IngredientChip key={item.id} item={item} selected={boosters} onToggle={toggleBooster} type="booster" />
+            <IngredientChip key={item.id} item={item} selected={boosters} onToggle={toggleBooster} type="booster" expanded={expandedInfo === item.id} onToggleInfo={toggleInfo} />
           ))}
         </div>
       </div>

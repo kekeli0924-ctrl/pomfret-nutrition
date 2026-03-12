@@ -134,7 +134,7 @@ export default function NutritionLabelsPage() {
               Fuel Up on Game Day
             </h2>
             <p className="text-dark-500 mb-8 text-lg">
-              Pair smart cafeteria choices with a CertaFuel smoothie and pregame snack for peak performance.
+              Pair smart cafeteria choices with a CertaFuel smoothie and pre- or post-workout snack for peak performance.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link

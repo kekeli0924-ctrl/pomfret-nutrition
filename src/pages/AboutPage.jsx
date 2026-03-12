@@ -69,8 +69,8 @@ export default function AboutPage() {
                 Game Day Performance Packs
               </h2>
               <p className="text-dark-500 max-w-xl mx-auto">
-                Curated pregame snack bundles designed to fuel athletes before competition.
-                Every pack is balanced for energy, hydration, and sustained performance.
+                Curated snack bundles designed to fuel athletes before and after competition.
+                Every pack is balanced for energy, hydration, and recovery.
               </p>
             </div>
           </Reveal>
@@ -86,7 +86,7 @@ export default function AboutPage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 bg-crimson-500 rounded-full shrink-0" />
-                    A pregame snack (PB&J, wrap, energy bites, etc.)
+                    A pre- or post-workout snack (PB&J, yogurt parfait, energy bites, etc.)
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 bg-crimson-500 rounded-full shrink-0" />
@@ -125,31 +125,6 @@ export default function AboutPage() {
                 Order Your Performance Pack
               </Link>
             </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── CertaFuel Overview ────────────────────── */}
-      <section className="px-6 py-20 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <Reveal>
-            <span className="text-xs font-semibold uppercase tracking-widest text-crimson-500">
-              Core Program
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-dark-900 mt-3 mb-3">
-              CertaFuel
-            </h2>
-            <p className="text-dark-500 max-w-xl mx-auto mb-8">
-              Our student-run pregame fuel station operates on every game day (Wednesday & Friday).
-              Students can build custom smoothies, pick from popular combos, and add pregame snacks — all
-              through our online ordering system.
-            </p>
-            <Link
-              to="/certafuel"
-              className="btn-bounce inline-flex items-center bg-crimson-500 hover:bg-crimson-600 text-white font-semibold px-7 py-3 rounded-md transition-colors duration-200"
-            >
-              Go to CertaFuel
-            </Link>
           </Reveal>
         </div>
       </section>

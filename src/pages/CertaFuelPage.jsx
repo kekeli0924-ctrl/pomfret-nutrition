@@ -272,6 +272,18 @@ export default function CertaFuelPage({ orders, addOrder, gameDay }) {
             Order Now
           </button>
         </div>
+
+        {/* Allergy notice */}
+        <p style={{
+          marginTop: '24px',
+          fontSize: '11px',
+          color: '#8A8A8A',
+          maxWidth: '320px',
+          lineHeight: 1.5,
+        }}>
+          ⚠️ Our menu contains <strong style={{ color: '#666' }}>peanuts, tree nuts, dairy, gluten, and soy</strong>.
+          Allergens are labeled on each item. Please check before ordering.
+        </p>
       </div>
     </div>
   )

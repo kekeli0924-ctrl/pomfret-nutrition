@@ -6,23 +6,23 @@ const INITIATIVES = [
   {
     title: 'Color-Coded Nutrition Labels',
     description:
-      'Our simple labeling system rates cafeteria foods with green, yellow, and red codes — plus a special "Athlete\'s Choice" icon for performance-friendly options.',
+      'Our simple labeling system rates cafeteria foods with green, yellow, and red codes — making it easy to eat well without counting calories.',
     link: '/nutrition-labels',
-    linkText: 'Learn More',
-  },
-  {
-    title: 'Game Day Performance Packs',
-    description:
-      'Curated pregame snack bundles designed by student athletes, for student athletes. Fuel up right before every competition.',
-    link: '/certafuel',
-    linkText: 'Order Now',
+    linkText: 'See the Labels',
   },
   {
     title: 'CertaFuel',
     description:
-      'Our student-run pregame fuel station with online preordering for game days. Build a smoothie, pick a snack, and fuel up.',
+      'Our student-run fuel station for game days. Build a custom smoothie, pick a pre- or post-workout snack, and order online for pickup.',
     link: '/certafuel',
-    linkText: 'Start Your Order',
+    linkText: 'Order Now',
+  },
+  {
+    title: 'Workshops & Events',
+    description:
+      'Cooking demos, myth-busting sessions, guest speakers, and hands-on meal prep — nutrition education that goes beyond the cafeteria.',
+    link: '/activities',
+    linkText: 'See What\'s Coming',
   },
 ]
 
@@ -141,43 +141,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── How It Works ─────────────────────────── */}
-      <section className="px-6 py-20 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <Reveal>
-            <div className="text-center mb-12">
-              <span className="text-xs font-semibold uppercase tracking-widest text-crimson-500">
-                CertaFuel
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-dark-900 mt-3 mb-3">
-                How It Works
-              </h2>
-            </div>
-          </Reveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {[
-              { step: '1', title: 'Order Online', desc: 'Build your smoothie and pick a snack before the 10 AM cutoff' },
-              { step: '2', title: 'We Blend It', desc: 'Our crew preps your order fresh before game time' },
-              { step: '3', title: 'Pick It Up', desc: 'Grab your order at CertaFuel on game day' },
-              { step: '4', title: 'Fuel Up', desc: 'Eat well, play well. Every game day.' },
-            ].map((s, i) => (
-              <Reveal key={s.step} delay={i * 100}>
-                <div className="text-center">
-                  <div className="w-10 h-10 rounded-md bg-crimson-500 text-white flex items-center justify-center text-sm font-bold mx-auto mb-4">
-                    {s.step}
-                  </div>
-                  <h3 className="font-bold text-dark-900 mb-1">{s.title}</h3>
-                  <p className="text-sm text-dark-500">{s.desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── Upcoming Events ──────────────────────── */}
-      <section className="px-6 py-20 bg-dark-50">
+      <section className="px-6 py-20 bg-white">
         <div className="max-w-4xl mx-auto">
           <Reveal>
             <div className="text-center mb-12">
